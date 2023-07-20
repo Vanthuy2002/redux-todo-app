@@ -8,8 +8,8 @@ const priorityColorMapping = {
 };
 
 // eslint-disable-next-line react/prop-types
-export default function Todo({ name, prioriry }) {
-  const [checked, setChecked] = useState(false);
+export default function Todo({ name, prioriry, isDone }) {
+  const [checked, setChecked] = useState(isDone);
 
   const toggleCheckbox = () => {
     setChecked(!checked);

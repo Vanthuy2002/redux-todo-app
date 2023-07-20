@@ -12,4 +12,18 @@ const startSearch = (payload) => {
   };
 };
 
-export { addTodo, startSearch };
+const statusFilterChange = (payload) => {
+  return {
+    type: 'filter/statusFilter',
+    payload,
+  };
+};
+
+const priorityFilter = (priorities) => {
+  return {
+    type: 'filter/prioryti',
+    payload: priorities,
+  };
+};
+
+export { addTodo, startSearch, statusFilterChange, priorityFilter };
