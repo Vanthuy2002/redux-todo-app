@@ -19,3 +19,10 @@ const todoSlice = createSlice({
 });
 export const { addTodo, toggleTodo } = todoSlice.actions;
 export default todoSlice.reducer;
+
+export const addTodos = (todo) => {
+  return function addTodoThunk(dispatch, getState) {
+    console.log('🚀', getState());
+    console.log(todo);
+  };
+};

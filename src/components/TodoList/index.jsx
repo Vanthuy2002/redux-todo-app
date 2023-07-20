@@ -55,6 +55,7 @@ export default function TodoList() {
         isDone: false,
       })
     );
+
     setName('');
     setPriority('Medium');
   };
