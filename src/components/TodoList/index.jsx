@@ -18,12 +18,13 @@ export default function TodoList() {
               filterPriority.includes(todo.priority)
           : todo.name.includes(state.filter.search);
       }
-      return (
-        todo.name.includes(state.filter.search) &&
+      return todo.name.includes(state.filter.search) &&
         (statusVal === 'Completed' ? todo.isDone : !todo.isDone) &&
-        filterPriority.length &&
-        filterPriority.includes(todo.priority)
-      );
+        filterPriority.length
+        ? filterPriority.includes(todo.priority)
+        : statusVal === 'Completed'
+        ? todo.isDone
+        : !todo.isDone;
     });
     return todosFilters;
   });
