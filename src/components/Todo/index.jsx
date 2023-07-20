@@ -1,7 +1,7 @@
 import { Row, Tag, Checkbox } from 'antd';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { toggleTodo } from '../../redux/actions';
+import { toggleTodo } from '../TodoList/TodoSlice';
 
 const priorityColorMapping = {
   High: 'red',
