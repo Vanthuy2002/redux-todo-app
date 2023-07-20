@@ -1,9 +1,9 @@
 import { Col, Row, Input, Button, Select, Tag, Space } from 'antd';
 import Todo from '../Todo';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo } from '../../redux/actions';
 import { v4 as uuidV4 } from 'uuid';
 import { useState } from 'react';
+import { addTodo } from './TodoSlice';
 
 export default function TodoList() {
   const dispatch = useDispatch();
@@ -18,12 +18,13 @@ export default function TodoList() {
               filterPriority.includes(todo.priority)
           : todo.name.includes(state.filter.search);
       }
-      return (
-        todo.name.includes(state.filter.search) &&
+      return todo.name.includes(state.filter.search) &&
         (statusVal === 'Completed' ? todo.isDone : !todo.isDone) &&
-        filterPriority.length &&
-        filterPriority.includes(todo.priority)
-      );
+        filterPriority.length
+        ? filterPriority.includes(todo.priority)
+        : statusVal === 'Completed'
+        ? todo.isDone
+        : !todo.isDone;
     });
     return todosFilters;
   });

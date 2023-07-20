@@ -1,6 +1,12 @@
-import { createStore } from 'redux';
-import rootReducer from './redux/reducer';
+import { configureStore } from '@reduxjs/toolkit';
+import FilterSlice from './components/Filter/FilterSlice';
+import TodoSlice from './components/TodoList/TodoSlice';
 
-const store = createStore(rootReducer);
+const store = configureStore({
+  reducer: {
+    filter: FilterSlice,
+    todoList: TodoSlice,
+  },
+});
 
 export default store;
