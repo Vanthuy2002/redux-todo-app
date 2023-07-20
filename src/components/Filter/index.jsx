@@ -11,11 +11,9 @@ export default function Filters() {
 
   const handleSearch = (e) => {
     setFilterVal(e.target.value);
+    dispatch(startSearch(e.target.value));
   };
 
-  const handleDispatch = () => {
-    dispatch(startSearch(filterVal));
-  };
   return (
     <Row justify='center'>
       <Col span={24}>
@@ -28,7 +26,6 @@ export default function Filters() {
           placeholder='input search text'
           value={filterVal}
           onChange={handleSearch}
-          onSearch={handleDispatch}
         />
       </Col>
       <Col sm={24}>

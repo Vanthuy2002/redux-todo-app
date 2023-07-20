@@ -7,14 +7,20 @@ import { useState } from 'react';
 
 export default function TodoList() {
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state.todoList);
+
+  const todos = useSelector((state) => {
+    const todosFilters = state.todoList.filter((todo) => {
+      return todo.name.includes(state.filter.search);
+    });
+    return todosFilters;
+  });
+
   const [name, setName] = useState('');
   const [priority, setPriority] = useState('Medium');
 
   const handleChange = (e) => {
     setName(e.target.value);
   };
-
   const handleSelect = (value) => {
     setPriority(value);
   };
