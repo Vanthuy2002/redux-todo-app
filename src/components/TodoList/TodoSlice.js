@@ -8,6 +8,11 @@ const todoReducer = (state = initialState, action) => {
     case 'todoList/Add':
       return [...state, action.payload];
 
+    case 'todo/Donetask':
+      return state.map((todo) =>
+        todo.id === action.payload ? { ...todo, isDone: !todo.isDone } : todo
+      );
+
     default:
       return state;
   }

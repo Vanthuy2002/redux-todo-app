@@ -26,4 +26,11 @@ const priorityFilter = (priorities) => {
   };
 };
 
-export { addTodo, startSearch, statusFilterChange, priorityFilter };
+const toggleTodo = (payload) => {
+  return {
+    type: 'todo/Donetask',
+    payload,
+  };
+};
+
+export { addTodo, startSearch, statusFilterChange, priorityFilter, toggleTodo };

@@ -65,6 +65,7 @@ export default function TodoList() {
           todos.map((todo) => (
             <Todo
               key={todo.id}
+              id={todo.id}
               name={todo.name}
               prioriry={todo.priority}
               isDone={todo.isDone}
