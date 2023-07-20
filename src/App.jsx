@@ -2,8 +2,11 @@ import { Typography, Divider } from 'antd';
 import './App.css';
 import Filters from './components/Filter';
 import TodoList from './components/TodoList';
+import { setupServer } from './fakeApi';
 
 const { Title } = Typography;
+
+setupServer();
 
 function App() {
   return (
