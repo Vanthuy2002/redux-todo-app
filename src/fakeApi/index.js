@@ -16,9 +16,9 @@ const setupServer = () => {
       });
 
       this.post('/api/update', (schema, request) => {
-        const payload = JSON.parse(request.requestBody);
-        const current = schema.todos.find(payload.id);
-        current.update(payload);
+        const id = JSON.parse(request.requestBody);
+        const current = schema.todos.find(id);
+        current.update({ isDone: !current.isDone });
       });
     },
   });
