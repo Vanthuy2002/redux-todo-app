@@ -3,7 +3,7 @@ import Todo from '../Todo';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidV4 } from 'uuid';
 import { useState } from 'react';
-import { addTodo } from './TodoSlice';
+import { addNewTodos } from './TodoSlice';
 
 export default function TodoList() {
   const dispatch = useDispatch();
@@ -11,20 +11,20 @@ export default function TodoList() {
   const filterPriority = useSelector((state) => state.filter.priority);
 
   const todos = useSelector((state) => {
-    const todosFilters = state.todoList.filter((todo) => {
+    const todosFilters = state.todoList?.todos?.filter((todo) => {
       if (statusVal === 'All') {
         return filterPriority.length > 0
-          ? todo.name.includes(state.filter.search) &&
-              filterPriority.includes(todo.priority)
-          : todo.name.includes(state.filter.search);
+          ? todo?.name.includes(state.filter.search) &&
+              filterPriority?.includes(todo?.priority)
+          : todo?.name.includes(state.filter.search);
       }
-      return todo.name.includes(state.filter.search) &&
-        (statusVal === 'Completed' ? todo.isDone : !todo.isDone) &&
+      return todo?.name.includes(state.filter.search) &&
+        (statusVal === 'Completed' ? todo?.isDone : !todo?.isDone) &&
         filterPriority.length
-        ? filterPriority.includes(todo.priority)
+        ? filterPriority.includes(todo?.priority)
         : statusVal === 'Completed'
-        ? todo.isDone
-        : !todo.isDone;
+        ? todo?.isDone
+        : !todo?.isDone;
     });
     return todosFilters;
   });
@@ -48,13 +48,14 @@ export default function TodoList() {
 
   const handleClick = () => {
     dispatch(
-      addTodo({
+      addNewTodos({
         id: uuidV4(),
         name,
         priority,
         isDone: false,
       })
     );
+
     setName('');
     setPriority('Medium');
   };
